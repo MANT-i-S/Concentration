@@ -1,1 +1,1 @@
-# concentration
+# Concentration game IOS app
