@@ -9,15 +9,23 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+    private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
     
-    var flipCount = 0 { didSet {flipCountLabel.text = "Flips: \(flipCount)" } }
+    private var numberOfPairsOfCards: Int {
+        return (cardButtons.count + 1) / 2 //almost sure 'return' is unnessesary here but keep it for now.
+    }
     
-    @IBOutlet weak var flipCountLabel: UILabel!
+    private(set) var flipCount = 0 {
+        didSet {
+            flipCountLabel.text = "Flips: \(flipCount)"
+        }
+    }
+    
+    @IBOutlet private weak var flipCountLabel: UILabel!
 
-    @IBOutlet var cardButtons: [UIButton]!
+    @IBOutlet private var cardButtons: [UIButton]!
     
-    @IBAction func touchCard(_ sender: UIButton) {
+    @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
         if let cardNumber = cardButtons.firstIndex(of: sender) {
             game.chooseCard(at: cardNumber)
@@ -25,6 +33,11 @@ class ViewController: UIViewController {
         } else {
             print("chosen card was not in carButtons")
         }
+    }
+    
+    @IBAction private func newGame(_ sender: UIButton) {
+        print("newbutton pressed")
+        //TODO pretty sure there is an efficient way to reset the game.
     }
     
     func updateViewFromModel() {
@@ -36,20 +49,31 @@ class ViewController: UIViewController {
                 button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
             } else {
                 button.setTitle("", for: UIControl.State.normal)
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 1)
             }
         }
     }
     
-    var emojiChoices = ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓"]
-    var emoji = [Int: String]()
+    private var emojiChoices = ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓"]
+    // TODO Give player option to chose between diffrerent sets of emojis and make it "public" probably
+    private var emoji = [Int: String]()
     
-    func emoji(for card: Card) -> String {
+    private func emoji(for card: Card) -> String {
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+            emoji[card.identifier] = emojiChoices.remove(at: emojiChoices.count.arc4random)
         }
         return emoji[card.identifier] ?? "?"
     }
 }
 
+extension Int {
+    var arc4random: Int {
+        if self > 0 {
+            return Int(arc4random_uniform(UInt32(self)))
+        } else if self < 0 {
+            return -Int(arc4random_uniform(UInt32(abs(self)))) //'-Int(arc4random_uniform(UInt32(abs(self))))' in lecture example but I don't think it's correct.
+        } else {
+            return 0
+        }
+    }
+}
