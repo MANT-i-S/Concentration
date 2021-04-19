@@ -1,1 +1,1 @@
-# Concentration game IOS app
+# Concentration game for IOS
