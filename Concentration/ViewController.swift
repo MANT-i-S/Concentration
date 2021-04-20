@@ -33,6 +33,16 @@ class ViewController: UIViewController {
         //TODO pretty sure there is an efficient way to reset the game. Deinitialize game and initialize new one, but how? xD
     }
     
+    @IBAction func themeMenu(_ sender: UIButton) {
+        let themeOptions = ["🍎", "🥕", "🚙", "🐆", "🥗"]
+        for index in themeButtons.indices{
+            themeButtons[index].setTitle(themeOptions[index], for: .normal)
+            //TODO move stack view to the front layer when pressed once. Make it desapear and move to back layer if pressed second time.
+        }
+    }
+    
+    @IBOutlet var themeButtons: [UIButton]!
+    
     func updateViewFromModel() {
         flipCountLabel.text = "Flips: \(game.flipCount)"
         for index in cardButtons.indices {
@@ -50,14 +60,14 @@ class ViewController: UIViewController {
     
     var themeChoise = "vegetables" //TODO Recieve this from user
     
-    private var emojiDictionary = ["fruits": ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍈", "🍒", "🍑"], "vegetables": ["🍆", "🍅", "🥑", "🥦", "🥬", "🥒", "🌶", "🫑", "🧄", "🍠", "🥕", "🥔", "🧅"]]
+    private var themeDictionary = ["fruits": ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍈", "🍒", "🍑"], "vegetables": ["🍆", "🍅", "🥑", "🥦", "🥬", "🥒", "🌶", "🫑", "🧄", "🍠", "🥕", "🥔", "🧅"], "vehicles": ["🚗", "🚌", "🚕", "🚙", "🚎", "🏎", "🚓", "🚑", "🚒", "🚐", "🛻", "🚚", "🚜"], "animals": ["🐆", "🦓", "🦍", "🦧", "🦛", "🐘", "🦏", "🐪", "🦒", "🦘", "🐄", "🐏", "🐕"], "food": ["🥗", "🥘", "🌮", "🍔", "🍟", "🍕", "🫔", "🌯", "🍱", "🥟", "🥧", "🍰", "🍩"]]
     
     // TODO Give player option to chose between different sets of emojis and make it "public" probably
     private var emoji = [Int: String]()
     
     private func emoji(for card: Card) -> String {
-        if emoji[card.identifier] == nil, emojiDictionary[themeChoise]!.count > 0 {
-            emoji[card.identifier] = emojiDictionary[themeChoise]!.remove(at: emojiDictionary[themeChoise]!.count.arc4random) //I don't think I should force unwrap in this function but haven't figured out better option yet.
+        if emoji[card.identifier] == nil, themeDictionary[themeChoise]!.count > 0 {
+            emoji[card.identifier] = themeDictionary[themeChoise]!.remove(at: themeDictionary[themeChoise]!.count.arc4random) //I don't think I should force unwrap in this function but lets make an exception this time xD.
         }
         return emoji[card.identifier] ?? "?"
     }
