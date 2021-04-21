@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15693A78263073430018C3A9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15693A77263073430018C3A9 /* Theme.swift */; };
 		15C71E09262C8D0F002DA846 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C71E08262C8D0F002DA846 /* AppDelegate.swift */; };
 		15C71E0B262C8D0F002DA846 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C71E0A262C8D0F002DA846 /* SceneDelegate.swift */; };
 		15C71E0D262C8D0F002DA846 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C71E0C262C8D0F002DA846 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15693A77263073430018C3A9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		15C71E05262C8D0F002DA846 /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C71E08262C8D0F002DA846 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15C71E0A262C8D0F002DA846 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15693A762630731C0018C3A9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				15FAA5E6262CC942006EC334 /* Concentration.swift */,
+				15FAA5E9262CCA81006EC334 /* Card.swift */,
+				15693A77263073430018C3A9 /* Theme.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		15C71DFC262C8D0F002DA846 = {
 			isa = PBXGroup;
 			children = (
@@ -60,12 +72,11 @@
 		15C71E07262C8D0F002DA846 /* Concentration */ = {
 			isa = PBXGroup;
 			children = (
-				15C71E0C262C8D0F002DA846 /* ViewController.swift */,
+				15693A762630731C0018C3A9 /* Model */,
 				15C71E0E262C8D0F002DA846 /* Main.storyboard */,
+				15C71E0C262C8D0F002DA846 /* ViewController.swift */,
 				15FAA5E4262CC526006EC334 /* Supporting Files */,
 				15C71E16262C8D14002DA846 /* Info.plist */,
-				15FAA5E6262CC942006EC334 /* Concentration.swift */,
-				15FAA5E9262CCA81006EC334 /* Card.swift */,
 			);
 			path = Concentration;
 			sourceTree = "<group>";
@@ -154,6 +165,7 @@
 				15C71E0D262C8D0F002DA846 /* ViewController.swift in Sources */,
 				15FAA5E7262CC942006EC334 /* Concentration.swift in Sources */,
 				15FAA5EA262CCA81006EC334 /* Card.swift in Sources */,
+				15693A78263073430018C3A9 /* Theme.swift in Sources */,
 				15C71E09262C8D0F002DA846 /* AppDelegate.swift in Sources */,
 				15C71E0B262C8D0F002DA846 /* SceneDelegate.swift in Sources */,
 			);

@@ -34,6 +34,11 @@ class Concentration {
         }
     }
     
+    func resetGame() {
+        cards.removeAll()
+        flipCount = 0
+    }
+    
     func chooseCard(at index: Int) {
         
         assert(cards.indices.contains(index), "Concentration.choseCard(at: \(index)): chosen index not in the cards")
