@@ -29,25 +29,26 @@ class ViewController: UIViewController {
     }
     
     @IBAction private func newGameButton(_ sender: UIButton) {
-        print("newbutton pressed") //TODO remove this.
         game.resetGame()
         resetUIView()
     }
     
     private func resetUIView() {
         game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
-        theme = Theme(chosen: themeChosen) //change for variable
+        theme = Theme(chosen: themeChosen)
         updateViewFromModel()
     }
     
-    var themeChosen = "🥕"
+    /*Default theme is fruits, theme options implemented throug emojis. Other options:
+    Fruits - "🍎", Vegitables - "🥕", Vehicles - "🚙", Animals - "🐆", Food - "🥗" */
+    var themeChosen = "🍎"
     
     lazy private var theme = Theme(chosen: themeChosen)
     
     @IBOutlet private weak var themeMenuSubView: UIStackView!
     
+    //Brings subview of buttons to the front and filling titles with theme options, when pressed second time do oposite.
     @IBAction private func themeMenuOperator(_ sender: UIButton) {
-        
         if sender.currentTitle == "⇧" {
             let themeOptions = ["🍎", "🥕", "🚙", "🐆", "🥗"]
             view.bringSubviewToFront(themeMenuSubView)
@@ -66,6 +67,7 @@ class ViewController: UIViewController {
     
     @IBOutlet private var themeButtons: [UIButton]!
     
+    //Changes theme to one from button title. Resets the game. Resets UIView.
     @IBAction private func themeOptions(_ sender: UIButton) {
         if let indexOfTheButton = themeButtons.firstIndex(of: sender) {
             print("button \(themeButtons[indexOfTheButton].titleLabel!.text!) pressed") // TODO remove this.
@@ -95,6 +97,7 @@ class ViewController: UIViewController {
     
     private var emoji = [Int: String]()
     
+    //Fills 'cards' with emojis from setOfEmojis
     private func emoji(for card: Card) -> String {
         if emoji[card.identifier] == nil, theme.setOfEmojis.count > 0 {
             emoji[card.identifier] = theme.setOfEmojis.remove(at: theme.setOfEmojis.count.arc4random)
@@ -103,6 +106,7 @@ class ViewController: UIViewController {
     }
 }
 
+//Just to avoid extensive casting and some error handling
 extension Int {
     var arc4random: Int {
         if self > 0 {
