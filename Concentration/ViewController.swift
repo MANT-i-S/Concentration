@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     
     @IBOutlet private weak var flipCountLabel: UILabel!
     
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     @IBOutlet private var cardButtons: [UIButton]!
     
     @IBAction private func touchCard(_ sender: UIButton) {
@@ -29,7 +31,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction private func newGameButton(_ sender: UIButton) {
-        game.resetGame()
         resetUIView()
     }
     
@@ -39,8 +40,6 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
-    /*Default theme is fruits, theme options implemented throug emojis. Other options:
-    Fruits - "🍎", Vegitables - "🥕", Vehicles - "🚙", Animals - "🐆", Food - "🥗" */
     private var themeChosen = String()
     
     lazy private var theme = Theme(chosen: themeChosen)
@@ -74,7 +73,6 @@ class ViewController: UIViewController {
             if let tempButton = themeButtons[indexOfTheButton].titleLabel, let tempChoise = tempButton.text {
                 themeChosen = tempChoise
                 theme = Theme(chosen: themeChosen)
-                game.resetGame()
                 resetUIView()
             }
         }
@@ -82,6 +80,7 @@ class ViewController: UIViewController {
     
     func updateViewFromModel() {
         flipCountLabel.text = "Flips: \(game.flipCount)"
+        scoreLabel.text = "Score: \(game.gameScore)"
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]

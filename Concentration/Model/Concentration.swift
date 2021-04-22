@@ -12,6 +12,8 @@ class Concentration {
     
     private(set) var flipCount = 0
     
+    private(set) var gameScore = 0 //TODO implement gamescore with memory of cards you've seen already.
+    
     private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
             var foundIndex: Int?
@@ -33,11 +35,7 @@ class Concentration {
         }
     }
     
-    func resetGame() {
-        cards.removeAll()
-        flipCount = 0
-    }
-    
+    //Matches cards, keeping score, flip count
     func chooseCard(at index: Int) {
         assert(cards.indices.contains(index), "Concentration.choseCard(at: \(index)): chosen index not in the cards")
         if cards[index].isFaceUp == false, cards[index].isMatched == false {
@@ -48,12 +46,18 @@ class Concentration {
                 if cards[matchIndex].identifier == cards[index].identifier {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
+                    gameScore += 2
+                    cards[index].isSeen = false
                 }
                 cards[index].isFaceUp = true
             } else {
                 indexOfOneAndOnlyFaceUpCard = index
             }
+            if cards[index].isSeen {
+                gameScore += -1
+            }
         }
+        cards[index].isSeen = true
     }
     
     init(numberOfPairsOfCards: Int) {
