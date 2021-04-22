@@ -81,11 +81,6 @@ class ViewController: UIViewController {
         }
     }
     
-    //var themeChoise = Theme(chosen: "🥕") //TODO Recieve this from user
-    
-//    private var themeDictionary = ["fruits": ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍈", "🍒", "🍑"], "vegetables": ["🍆", "🍅", "🥑", "🥦", "🥬", "🥒", "🌶", "🫑", "🧄", "🍠", "🥕", "🥔", "🧅"], "vehicles": ["🚗", "🚌", "🚕", "🚙", "🚎", "🏎", "🚓", "🚑", "🚒", "🚐", "🛻", "🚚", "🚜"], "animals": ["🐆", "🦓", "🦍", "🦧", "🦛", "🐘", "🦏", "🐪", "🦒", "🦘", "🐄", "🐏", "🐕"], "food": ["🥗", "🥘", "🌮", "🍔", "🍟", "🍕", "🫔", "🌯", "🍱", "🥟", "🥧", "🍰", "🍩"]]
-    
-    // TODO Give player option to chose between different sets of emojis and make it "public" probably
     private var emoji = [Int: String]()
     
     private func emoji(for card: Card) -> String {
