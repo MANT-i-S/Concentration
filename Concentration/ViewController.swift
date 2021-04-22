@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         print("newbutton pressed") //TODO remove this.
         game.resetGame()
         resetUIView()
-        //TODO pretty sure there is an efficient way to reset the game. Deinitialize game and initialize new one, but how? xD
     }
     
     private func resetUIView() {
@@ -42,13 +41,26 @@ class ViewController: UIViewController {
     }
     
     var themeChosen = "🥕"
-    lazy var theme = Theme(chosen: themeChosen)
     
-    @IBAction private func themeMenu(_ sender: UIButton) {
-        let themeOptions = ["🍎", "🥕", "🚙", "🐆", "🥗"]
-        for index in themeButtons.indices{
-            themeButtons[index].setTitle(themeOptions[index], for: .normal)
-            //TODO move stack view to the front layer when pressed once. Make it desapear and move to back layer if pressed second time.
+    lazy private var theme = Theme(chosen: themeChosen)
+    
+    @IBOutlet private weak var themeMenuSubView: UIStackView!
+    
+    @IBAction private func themeMenuOperator(_ sender: UIButton) {
+        
+        if sender.currentTitle == "⇧" {
+            let themeOptions = ["🍎", "🥕", "🚙", "🐆", "🥗"]
+            view.bringSubviewToFront(themeMenuSubView)
+            for index in themeButtons.indices {
+                themeButtons[index].setTitle(themeOptions[index], for: .normal)
+            }
+            sender.setTitle("⇣", for: .normal)
+        } else {
+            view.sendSubviewToBack(themeMenuSubView)
+            for index in themeButtons.indices {
+                themeButtons[index].setTitle("", for: .normal)
+            }
+            sender.setTitle("⇧", for: .normal)
         }
     }
     
@@ -59,7 +71,7 @@ class ViewController: UIViewController {
             print("button \(themeButtons[indexOfTheButton].titleLabel!.text!) pressed") // TODO remove this.
             if let tempButton = themeButtons[indexOfTheButton].titleLabel, let tempChoise = tempButton.text {
                 themeChosen = tempChoise
-                theme = Theme(chosen: themeChosen) //Don't think I should double force unwrap here.
+                theme = Theme(chosen: themeChosen)
                 game.resetGame()
                 resetUIView()
             }
