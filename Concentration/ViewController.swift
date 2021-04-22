@@ -29,15 +29,22 @@ class ViewController: UIViewController {
     }
     
     @IBAction private func newGameButton(_ sender: UIButton) {
-        print("newbutton pressed")
+        print("newbutton pressed") //TODO remove this.
         game.resetGame()
-        game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
-        themeChoise = Theme(chosen: "🥕") //change for variable
-        updateViewFromModel()
+        resetUIView()
         //TODO pretty sure there is an efficient way to reset the game. Deinitialize game and initialize new one, but how? xD
     }
     
-    @IBAction func themeMenu(_ sender: UIButton) {
+    private func resetUIView() {
+        game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+        theme = Theme(chosen: themeChosen) //change for variable
+        updateViewFromModel()
+    }
+    
+    var themeChosen = "🥕"
+    lazy var theme = Theme(chosen: themeChosen)
+    
+    @IBAction private func themeMenu(_ sender: UIButton) {
         let themeOptions = ["🍎", "🥕", "🚙", "🐆", "🥗"]
         for index in themeButtons.indices{
             themeButtons[index].setTitle(themeOptions[index], for: .normal)
@@ -45,7 +52,19 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBOutlet var themeButtons: [UIButton]!
+    @IBOutlet private var themeButtons: [UIButton]!
+    
+    @IBAction private func themeOptions(_ sender: UIButton) {
+        if let indexOfTheButton = themeButtons.firstIndex(of: sender) {
+            print("button \(themeButtons[indexOfTheButton].titleLabel!.text!) pressed") // TODO remove this.
+            if let tempButton = themeButtons[indexOfTheButton].titleLabel, let tempChoise = tempButton.text {
+                themeChosen = tempChoise
+                theme = Theme(chosen: themeChosen) //Don't think I should double force unwrap here.
+                game.resetGame()
+                resetUIView()
+            }
+        }
+    }
     
     func updateViewFromModel() {
         flipCountLabel.text = "Flips: \(game.flipCount)"
@@ -62,7 +81,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var themeChoise = Theme(chosen: "🥕") //TODO Recieve this from user
+    //var themeChoise = Theme(chosen: "🥕") //TODO Recieve this from user
     
 //    private var themeDictionary = ["fruits": ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍈", "🍒", "🍑"], "vegetables": ["🍆", "🍅", "🥑", "🥦", "🥬", "🥒", "🌶", "🫑", "🧄", "🍠", "🥕", "🥔", "🧅"], "vehicles": ["🚗", "🚌", "🚕", "🚙", "🚎", "🏎", "🚓", "🚑", "🚒", "🚐", "🛻", "🚚", "🚜"], "animals": ["🐆", "🦓", "🦍", "🦧", "🦛", "🐘", "🦏", "🐪", "🦒", "🦘", "🐄", "🐏", "🐕"], "food": ["🥗", "🥘", "🌮", "🍔", "🍟", "🍕", "🫔", "🌯", "🍱", "🥟", "🥧", "🍰", "🍩"]]
     
@@ -70,8 +89,8 @@ class ViewController: UIViewController {
     private var emoji = [Int: String]()
     
     private func emoji(for card: Card) -> String {
-        if emoji[card.identifier] == nil, themeChoise.setOfEmojis.count > 0 {
-            emoji[card.identifier] = themeChoise.setOfEmojis.remove(at: themeChoise.setOfEmojis.count.arc4random)
+        if emoji[card.identifier] == nil, theme.setOfEmojis.count > 0 {
+            emoji[card.identifier] = theme.setOfEmojis.remove(at: theme.setOfEmojis.count.arc4random)
         }
         return emoji[card.identifier] ?? "?"
     }

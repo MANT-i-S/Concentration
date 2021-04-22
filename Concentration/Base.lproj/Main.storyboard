@@ -23,22 +23,37 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EV5-Mv-HO4">
                                         <rect key="frame" x="0.0" y="0.0" width="65.333333333333329" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <connections>
+                                            <action selector="themeOptions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fDB-r6-KXS"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6Q-Br-MmH">
                                         <rect key="frame" x="73.333333333333329" y="0.0" width="64.999999999999986" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <connections>
+                                            <action selector="themeOptions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IYO-fT-CnP"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4U-Ug-cSA">
                                         <rect key="frame" x="146.33333333333334" y="0.0" width="65.333333333333343" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <connections>
+                                            <action selector="themeOptions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D7v-RR-wAs"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7E-Xq-gwm">
                                         <rect key="frame" x="219.66666666666666" y="0.0" width="64.999999999999972" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <connections>
+                                            <action selector="themeOptions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XSH-fl-dxX"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLH-fS-qtP">
                                         <rect key="frame" x="292.66666666666669" y="0.0" width="65.333333333333314" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <connections>
+                                            <action selector="themeOptions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZLz-He-4CT"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
