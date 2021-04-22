@@ -41,7 +41,7 @@ class ViewController: UIViewController {
     
     /*Default theme is fruits, theme options implemented throug emojis. Other options:
     Fruits - "🍎", Vegitables - "🥕", Vehicles - "🚙", Animals - "🐆", Food - "🥗" */
-    var themeChosen = "🍎"
+    private var themeChosen = String()
     
     lazy private var theme = Theme(chosen: themeChosen)
     
@@ -106,7 +106,7 @@ class ViewController: UIViewController {
     }
 }
 
-//Just to avoid extensive casting and some error handling
+//Just to avoid excensive casting and some error handling
 extension Int {
     var arc4random: Int {
         if self > 0 {
