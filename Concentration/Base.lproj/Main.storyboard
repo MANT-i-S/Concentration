@@ -68,13 +68,27 @@
                                     <action selector="newGameButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BZP-Aw-gxm"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Flips: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrl-jz-sdm">
-                                <rect key="frame" x="15.999999999999993" y="44" width="122.33333333333331" height="48"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" systemColor="systemYellowColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="COY-Dd-kzN">
+                                <rect key="frame" x="16" y="44" width="357.33333333333331" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Flips: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrl-jz-sdm">
+                                        <rect key="frame" x="0.0" y="0.0" width="77.333333333333329" height="30"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" systemColor="systemYellowColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="Score: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUV-E8-z68">
+                                        <rect key="frame" x="85.333333333333314" y="0.0" width="272" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" systemColor="systemYellowColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="SUV-E8-z68" firstAttribute="leading" secondItem="xrl-jz-sdm" secondAttribute="trailing" constant="8.0000000000000284" id="fgr-36-JBV"/>
+                                </constraints>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K91-Rw-i2G">
                                 <rect key="frame" x="298" y="750" width="76" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
@@ -86,7 +100,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="w9Y-fm-pIJ">
-                                <rect key="frame" x="16" y="100" width="358" height="312"/>
+                                <rect key="frame" x="16" y="82" width="358" height="312"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3nk-5S-VcS">
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="72"/>
@@ -238,32 +252,25 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUV-E8-z68">
-                                <rect key="frame" x="146.33333333333334" y="44" width="141.00000000000003" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" systemColor="systemYellowColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="y0r-XL-s8P" secondAttribute="bottom" id="5gm-WA-rwh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="K91-Rw-i2G" secondAttribute="trailing" constant="16" id="AR5-UZ-UBK"/>
-                            <constraint firstItem="SUV-E8-z68" firstAttribute="leading" secondItem="xrl-jz-sdm" secondAttribute="trailing" constant="8" symbolic="YES" id="Lfr-W9-bd5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="COY-Dd-kzN" secondAttribute="trailing" constant="16.666666666666686" id="MKT-SC-mrW"/>
                             <constraint firstItem="y0r-XL-s8P" firstAttribute="top" relation="greaterThanOrEqual" secondItem="w9Y-fm-pIJ" secondAttribute="bottom" constant="8" symbolic="YES" id="Mae-ys-oZl"/>
-                            <constraint firstItem="w9Y-fm-pIJ" firstAttribute="top" secondItem="xrl-jz-sdm" secondAttribute="bottom" constant="8" symbolic="YES" id="PgV-wj-VI4"/>
+                            <constraint firstItem="COY-Dd-kzN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Osy-eu-FZY"/>
+                            <constraint firstItem="COY-Dd-kzN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Qqq-pR-sTI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="K91-Rw-i2G" secondAttribute="bottom" id="RWQ-Ss-v9z"/>
                             <constraint firstItem="y0r-XL-s8P" firstAttribute="top" secondItem="OA5-Kj-zLb" secondAttribute="bottom" constant="8" symbolic="YES" id="Rcb-92-8MR"/>
                             <constraint firstItem="OA5-Kj-zLb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="TBE-sE-kxn"/>
                             <constraint firstItem="K91-Rw-i2G" firstAttribute="leading" secondItem="y0r-XL-s8P" secondAttribute="trailing" constant="8" symbolic="YES" id="VjF-vp-IQx"/>
                             <constraint firstItem="w9Y-fm-pIJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="W3H-hd-dkS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="xrl-jz-sdm" secondAttribute="top" id="amP-Gd-H8V"/>
                             <constraint firstItem="y0r-XL-s8P" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gL8-5k-eba"/>
+                            <constraint firstItem="w9Y-fm-pIJ" firstAttribute="top" secondItem="COY-Dd-kzN" secondAttribute="bottom" constant="8" symbolic="YES" id="jL3-Ue-bHv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OA5-Kj-zLb" secondAttribute="trailing" constant="16" id="ldc-zz-EbP"/>
-                            <constraint firstItem="xrl-jz-sdm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="r0V-Ot-Eck"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="w9Y-fm-pIJ" secondAttribute="trailing" constant="16" id="rKJ-zT-6yl"/>
-                            <constraint firstItem="SUV-E8-z68" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="trS-J9-BKq"/>
                         </constraints>
                     </view>
                     <connections>

@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     
     @IBOutlet private weak var flipCountLabel: UILabel!
     
-    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet private weak var scoreLabel: UILabel!
     
     @IBOutlet private var cardButtons: [UIButton]!
     
